@@ -4,12 +4,15 @@ language: bash
 services: docker
 
 env:
-  - DOCKER_IMAGE=nginx-rtmp
+  - DOCKER_IMAGE=encoder-rtmp
+  - DOCKER_USERNAME=rallyponttech
 
 script:
-  - docker build -t ${DOCKER_IMAGE} .
-
-after_script:
+  - docker login --username $DOCKER_USERNAME --password $DOCKER_HUB_PASSWORD
+  - docker build -t $DOCKER_IMAGE .
   - docker images
-  - docker run -d -p 1935:1935 -p 8080:80 -t ${DOCKER_IMAGE}
-  - docker ps -a
+  - docker tag test $DOCKER_USERNAME/$DOCKER_IMAGE
+  - docker push $DOCKER_USERNAME/DOCKER_IMAGE
+
+
+
