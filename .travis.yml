@@ -4,7 +4,7 @@ language: bash
 services: docker
 
 env:
-  - DOCKER_IMAGE=encoder-rtmp
+  - DOCKER_IMAGE="encoder-rtmp"
   - DOCKER_USERNAME=rallypointtech
 
 script:
