@@ -4,8 +4,9 @@ language: bash
 services: docker
 
 env:
-  - DOCKER_IMAGE="encoder-rtmp"
-  - DOCKER_USERNAME=rallypointtech
+  global:
+    - DOCKER_IMAGE="encoder-rtmp"
+    - DOCKER_USERNAME=rallypointtech
 
 script:
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
