@@ -18,8 +18,8 @@ jobs:
         - docker images
         - docker tag $DOCKER_IMAGE $DOCKER_USERNAME/$DOCKER_IMAGE
         - docker push $DOCKER_USERNAME/$DOCKER_IMAGE
-    - stage: Deploy docker
-      script:
+    - stage: deploy
+      install:
         - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
         - chmod +x ./kubectl
         - sudo mv ./kubectl /usr/local/bin/kubectl
@@ -29,8 +29,6 @@ jobs:
         - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
         - chmod 700 get_helm.sh
         - sudo ./get_helm.sh
-    - stage: deploy
-      install: skip
       script: skip
       deploy:
         provider: script
