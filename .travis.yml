@@ -25,4 +25,6 @@ jobs:
         - sudo mv ./kubectl /usr/local/bin/kubectl
         - mkdir ${HOME}/.kube
         - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-        - ./kubectl get pods
+        - /usr/local/bin/kubectl --help
+        - kubectl --help
+        - kubectl get pods
