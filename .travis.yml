@@ -25,6 +25,13 @@ jobs:
         - sudo mv ./kubectl /usr/local/bin/kubectl
         - mkdir ${HOME}/.kube
         - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
-        - /usr/local/bin/kubectl --help
-        - kubectl --help
         - kubectl get pods
+        - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+        - chmod 700 get_helm.sh
+        - sudo ./get_helm.sh
+    - stage: deploy
+      install: skip
+      script: skip
+      deploy:
+        provider: script
+        script: ./ci/travis/deploy.sh

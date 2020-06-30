@@ -1,0 +1,2 @@
+echo "toto"
+helm --help
