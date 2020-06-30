@@ -32,5 +32,6 @@ jobs:
         - echo "END INSTALL"
       script: skip
       deploy:
+        skip_cleanup: true
         provider: script
         script: ./ci/travis/deploy.sh
