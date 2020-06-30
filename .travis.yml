@@ -18,3 +18,11 @@ jobs:
         - docker images
         - docker tag $DOCKER_IMAGE $DOCKER_USERNAME/$DOCKER_IMAGE
         - docker push $DOCKER_USERNAME/$DOCKER_IMAGE
+    - stage: Deploy docker
+      script:
+        - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        - chmod +x ./kubectl
+        - sudo mv ./kubectl /usr/local/bin/kubectl
+        - mkdir ${HOME}/.kube
+        - echo "$KUBE_CONFIG" | base64 --decode > ${HOME}/.kube/config
+        - kubectl get pods
