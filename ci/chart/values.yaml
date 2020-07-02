@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: https://hub.docker.com/repository/docker/rallypointtech/encoder-rtmp
+  repository: hub.docker.com/repository/docker/rallypointtech/encoder-rtmp
   tag: latest
 
 imagePullSecrets: []
