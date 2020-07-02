@@ -7,6 +7,7 @@ metadata:
 spec:
   selector:
     app: {{ .Chart.Name }}
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80
@@ -16,4 +17,3 @@ spec:
       targetPort: 1935
       protocol: TCP
       name: rtmp
-  type: LoadBalancer
