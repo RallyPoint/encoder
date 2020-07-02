@@ -20,6 +20,7 @@ track="${1-stable}"
 name=$(deploy_name "$track")
 echo "KUBE_NAMESPACE: $KUBE_NAMESPACE";
 
+pwd
 helm upgrade --install \
   --wait \
   --set env.HTTP_PORT="$HTTP_PORT" \
@@ -27,4 +28,4 @@ helm upgrade --install \
   --set env.HLS_API="$HLS_API" \
   --namespace="$KUBE_NAMESPACE" \
   "$name" \
-  ../chart/
+  ci/chart/
