@@ -1,0 +1,14 @@
+# Default values for checkfront.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: https://hub.docker.com/repository/docker/rallypointtech/encoder-rtmp
+  tag: latest
+
+imagePullSecrets: []
+
+env:
+  HTTP_PORT: 80
+  RTMP_PORT: 1935
+  HLS_API: "192.168.48.1:9090"

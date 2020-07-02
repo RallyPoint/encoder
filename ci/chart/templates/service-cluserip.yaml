@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "fullname" . }}-clusteip
+  labels:
+    app: {{ .Chart.Name }}-clusteip
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5050
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 1935
+      targetPort: 1935
+      protocol: TCP
+      name: rtmp
+  selector:
+    app: {{ .Chart.Name }}
