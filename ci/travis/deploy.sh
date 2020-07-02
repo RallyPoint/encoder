@@ -15,3 +15,15 @@ helm upgrade --install \
   --namespace="$KUBE_NAMESPACE" \
   "$name" \
   ci/chart/
+
+
+  function deploy_name() {
+    name="$CI_ENVIRONMENT_SLUG"
+    track="${1-stable}"
+
+    if [[ "$track" != "stable" ]]; then
+      name="$name-$track"
+    fi
+
+    echo $name
+  }
