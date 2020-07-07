@@ -7,8 +7,8 @@ env:
   global:
     - DOCKER_IMAGE="encoder-rtmp"
     - DOCKER_USERNAME=rallypointtech
-    - KUBE_NAMESPACE="encoder"
-    - CI_ENVIRONMENT_SLUG="test"
+    - KUBE_NAMESPACE="prod"
+    - CI_ENVIRONMENT_SLUG="encoder"
 
 jobs:
   include:
