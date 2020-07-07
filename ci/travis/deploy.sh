@@ -19,10 +19,11 @@ function deploy_name() {
 track="${1-stable}"
 name=$(deploy_name "$track")
 echo "KUBE_NAMESPACE: $KUBE_NAMESPACE";
+echo "name: $name";
 
 pwd
 
-kubectl create namespace $KUBE_NAMESPACE
+#kubectl create namespace $KUBE_NAMESPACE
 
 helm upgrade --install \
   --wait \
