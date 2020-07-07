@@ -31,6 +31,7 @@ helm upgrade --install \
   --set env.RTMP_PORT="$RTMP_PORT" \
   --set env.HLS_API="$HLS_API" \
   --namespace="$KUBE_NAMESPACE" \
+  --create-namespace \
   "$name" \
   ci/chart/
 
