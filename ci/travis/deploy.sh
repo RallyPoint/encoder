@@ -25,7 +25,7 @@ pwd
 
 #kubectl create namespace $KUBE_NAMESPACE
 
-helm upgrade --install \
+helm install --install \
   --wait \
   --set env.HTTP_PORT="$HTTP_PORT" \
   --set env.RTMP_PORT="$RTMP_PORT" \
