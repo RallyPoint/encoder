@@ -9,10 +9,6 @@ spec:
     app: {{ .Chart.Name }}
   type: LoadBalancer
   ports:
-    - port: 8080
-      targetPort: 80
-      protocol: TCP
-      name: http
     - port: 1935
       targetPort: 1935
       protocol: TCP
