@@ -31,7 +31,7 @@ helm upgrade --install \
   --set env.HLS_API="$HLS_API" \
   --namespace="$KUBE_NAMESPACE" \
   "$name" \
-  ci/chart/ --force
+  ci/chart/
 
 
 echo "END"
