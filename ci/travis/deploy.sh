@@ -28,7 +28,7 @@ RTMP_PORT="1935"
 HTTP_PORT="80"
 HLS_API="back-back-clusteip.prod.svc.cluster.local"
 
-helm install \
+helm upgrade --install \
   --wait \
   --set env.HTTP_PORT="$HTTP_PORT" \
   --set env.RTMP_PORT="$RTMP_PORT" \
