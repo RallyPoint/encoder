@@ -20,8 +20,8 @@ spec:
           imagePullPolicy: Always
           env:
             - name: "HTTP_PORT"
-              value:
+              value: "{{ .Values.HTTP_PORT }}"
             - name: "RTMP_PORT"
-              value: "1935"
+              value: "{{ .Values.RTMP_PORT }}"
             - name: "HLS_API"
-              value: "192.168.48.1:9090"
+              value: "{{ .Values.HLS_API }}"
