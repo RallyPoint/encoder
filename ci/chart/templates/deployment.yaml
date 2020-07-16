@@ -17,10 +17,10 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: "HTTP_PORT"
-              value: "80"
+              value:
             - name: "RTMP_PORT"
               value: "1935"
             - name: "HLS_API"
