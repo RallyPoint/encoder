@@ -7,6 +7,7 @@ ARG FFMPEG_VERSION=4.2.2
 # Build the NGINX-build image.
 FROM alfg/nginx-rtmp
 
+
 ADD nginx.conf /etc/nginx/nginx.conf.template
 RUN mkdir -p /opt/data
 ADD static /www/static

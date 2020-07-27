@@ -6,6 +6,7 @@ services:
     command: /usr/app/ci/run-local.sh
     volumes:
       - ./ci:/usr/app/ci/
+      - ./data:/opt/data/hls
     ports:
       - 1935:1935
       - 8080:80

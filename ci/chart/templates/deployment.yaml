@@ -25,3 +25,13 @@ spec:
               value: "{{ .Values.env.RTMP_PORT }}"
             - name: "HLS_API"
               value: "{{ .Values.env.HLS_API }}"
+          volumeMounts:
+            - mountPath: /opt/data
+              name: media-volume
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: back-config
+        - name: media-volume
+          persistentVolumeClaim:
+            claimName: 'media-pvc'

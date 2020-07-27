@@ -1,6 +1,6 @@
 # compiled output
 /node_modules
-
+/data
 # Local Config
 /config/local-dev.json
 
