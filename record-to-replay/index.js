@@ -1,3 +1,5 @@
+var process = require('process');
+process.chdir(__dirname);
 const mysql      = require('mysql');
 const config     = require('config');
 const ffmpeg = require('fluent-ffmpeg');
@@ -39,7 +41,6 @@ const run = async () => {
         try {
             ffmpeg.ffprobe(result.path, function(err, data) {
                 duration= data.format.duration;
-                console.log(seek);
 
                 ffmpeg(result.path)
 
