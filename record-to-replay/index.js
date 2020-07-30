@@ -51,7 +51,7 @@ const run = async () => {
 
                     .on('end', function() {
                         console.log('Finished processing');
-                        query('UPDATE replay_entity SET status = true, duration = "'+duration+'" WHERE id = "'+result.id+'"').then(()=>{
+                        query('UPDATE replay_entity SET status = true, file = "'+fileName+'.mp4", duration = "'+duration+'" WHERE id = "'+result.id+'"').then(()=>{
                             fs.unlinkSync(result.path);
                         }).then(resolve).catch(reject);
                     })
