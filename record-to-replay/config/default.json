@@ -1,0 +1,15 @@
+{
+  "INTERVAL_KEEP_ALIVE" : 5000,
+  "STATS_URL" : "http://localhost",
+  "LB_DNS_URL" : "http://localhost",
+  "mysql": {
+    "host": "192.168.48.1",
+    "port": 3306,
+    "username": "user",
+    "password": "password",
+    "database": "rallypoint"
+  },
+  "convert": {
+    "outputPath" : "./"
+  }
+}

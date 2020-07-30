@@ -1,5 +1,0 @@
-{
-  "INTERVAL_KEEP_ALIVE" : 5000,
-  "STATS_URL" : "http://localhost:8080/stats",
-  "LB_DNS_URL" : "http://localhost"
-}

@@ -8,6 +8,8 @@ image:
 
 imagePullSecrets: []
 
+ENV_CONFIG: "prod"
+
 env:
   HTTP_PORT: 80
   RTMP_PORT: 1935

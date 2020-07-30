@@ -7,10 +7,16 @@ ARG FFMPEG_VERSION=4.2.2
 # Build the NGINX-build image.
 FROM alfg/nginx-rtmp
 
+RUN apk add --update nodejs npm
+RUN mkdir -p /root/app
+COPY record-to-replay /root/app
 
-ADD nginx.conf /etc/nginx/nginx.conf.template
+ADD crontab.save /root/crontab.save
+RUN crontab /root/crontab.save
+
+ADD nginx/nginx.conf /etc/nginx/nginx.conf.template
 RUN mkdir -p /opt/data
-ADD static /www/static
+ADD nginx/static /www/static
 
 EXPOSE 1935
 EXPOSE 80

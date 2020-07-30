@@ -25,7 +25,17 @@ spec:
               value: "{{ .Values.env.RTMP_PORT }}"
             - name: "HLS_API"
               value: "{{ .Values.env.HLS_API }}"
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - cp /etc/secret-volume/{{ .Values.ENV_CONFIG }}.json /root/app/config/{{ .Values.ENV_CONFIG }}.json
           volumeMounts:
+            - name: secret-volume
+              mountPath: /etc/secret-volume
+              readOnly: true
             - mountPath: /opt/data
               name: media-volume
       volumes:
