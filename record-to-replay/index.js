@@ -1,7 +1,8 @@
-var process = require('process');
+const process = require('process');
 process.chdir(__dirname);
 const mysql      = require('mysql');
 const config     = require('config');
+const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
 const uuidGen = require('uuid');
 const connection = mysql.createConnection({
@@ -39,7 +40,7 @@ const run = async () => {
         const fileName = result.path.split('/').slice(-1)[0].split('.').slice(0,-1).join('.');
         console.log(result.path.split('/').slice(-1),fileName);
         try {
-            ffmpeg.ffprobe(result.path, function(err, data) {
+            ffmpeg.ffprobe(, function(err, data) {
                 duration= data.format.duration;
 
                 ffmpeg(result.path)
@@ -50,7 +51,9 @@ const run = async () => {
 
                     .on('end', function() {
                         console.log('Finished processing');
-                        query('UPDATE replay_entity SET status = true, duration = "'+duration+'" WHERE id = "'+result.id+'"').then(resolve).catch(reject);
+                        query('UPDATE replay_entity SET status = true, duration = "'+duration+'" WHERE id = "'+result.id+'"').then(()=>{
+                            fs.unlinkSync(result.path);
+                        }).then(resolve).catch(reject);
                     })
                     .on('error', function (error) {
                         reject(error);
