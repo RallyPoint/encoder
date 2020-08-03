@@ -40,7 +40,7 @@ const run = async () => {
         const fileName = result.path.split('/').slice(-1)[0].split('.').slice(0,-1).join('.');
         console.log(result.path.split('/').slice(-1),fileName);
         try {
-            ffmpeg.ffprobe(, function(err, data) {
+            ffmpeg.ffprobe(result.path, function(err, data) {
                 duration= data.format.duration;
 
                 ffmpeg(result.path)
@@ -69,8 +69,22 @@ const run = async () => {
 
 };
 
-run().catch((e)=>{
-    console.error(e);
-}).then(()=>{
-    connection.end();
-});
+const loopRun = async ()=>{
+    let results = await query('SELECT * FROM replay_entity WHERE convertId is null AND status = false LIMIT 1;');
+    let lastId = null;
+    while(results.length > 0) {
+        results = await query('SELECT * FROM replay_entity WHERE convertId is null AND status = false LIMIT 1;');
+        if(lastId !== null && lastId !== results[0].id){
+            console.error("Same ID");
+            break;
+        }
+        lastId = results[0].id;
+        run().catch((e) => {
+            console.error(e);
+        }).then(() => {
+            connection.end();
+        });
+    }
+};
+
+loopRun();
