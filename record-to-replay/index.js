@@ -26,8 +26,6 @@ const query = (req)=>{
 };
 
 const run = async () => {
-    // Delay for concurent convertion if you are scaling
-    await new Promise((resolve,reject)=>setTimeout(resolve,START_DELAY));
     // Reserve one record
     await query('UPDATE replay_entity SET convertId = "'+uuid+'" WHERE status = false AND convertId IS null LIMIT 1');
     // Get record reserved
@@ -70,6 +68,8 @@ const run = async () => {
 };
 
 const loopRun = async ()=>{
+    // Delay for concurent convertion if you are scaling
+    await new Promise((resolve,reject)=>setTimeout(resolve,START_DELAY));
     let results = await query('SELECT * FROM replay_entity WHERE convertId is null AND status = false LIMIT 1;');
     let lastId = null;
     while(results.length > 0) {
