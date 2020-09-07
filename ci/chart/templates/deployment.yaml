@@ -23,6 +23,9 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+          volumeMounts:
+            - mountPath: /opt/data
+              name: media-volume
       volumes:
         - name: media-volume
           persistentVolumeClaim:
