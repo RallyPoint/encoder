@@ -1,5 +1,5 @@
 #!/bin/bash
 
 envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < \
-  /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
-  nginx
+  /usr/local/srs/conf/srs.conf.template > /usr/local/srs/conf/srs.conf && \
+  ./objs/srs -c conf/srs.conf

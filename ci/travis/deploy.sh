@@ -30,8 +30,6 @@ HLS_API="back-back-clusteip.prod.svc.cluster.local"
 
 helm upgrade --install \
   --wait \
-  --set env.HTTP_PORT="$HTTP_PORT" \
-  --set env.RTMP_PORT="$RTMP_PORT" \
   --set env.HLS_API="$HLS_API" \
   --namespace="$KUBE_NAMESPACE" \
   --set image.tag="$TRAVIS_COMMIT" \

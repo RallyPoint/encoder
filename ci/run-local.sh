@@ -1,6 +1,5 @@
-#!/bin/sh
-echo "==============================="
-pwd
+#!/bin/bash
+
 envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < \
   /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && \
-  nginx
+  ./objs/srs -c conf/srs.conf
