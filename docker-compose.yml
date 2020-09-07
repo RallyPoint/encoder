@@ -13,6 +13,4 @@ services:
       - 8080:80
       - 8443:443
     environment:
-      - HTTP_PORT=80
-      - RTMP_PORT=1935
       - HLS_API=192.168.48.1:9090
