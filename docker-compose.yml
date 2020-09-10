@@ -7,7 +7,8 @@ services:
     volumes:
       - ./ci:/usr/app/ci/
       - ./data:/opt/data/hls
-      - ./record-to-replay/:/root/app
+      - ./hls.conf:/root/app
+      - ./record-to-replay/:/usr/local/srs/conf/srs.conf
     ports:
       - 1935:1935
       - 8080:80
