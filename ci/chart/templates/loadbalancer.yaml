@@ -4,6 +4,8 @@ metadata:
   name: {{ template "fullname" . }}
   labels:
     app: {{ .Chart.Name }}
+  annotations:
+    service.beta.kubernetes.io/ovh-loadbalancer-balance: leastconn
 spec:
   selector:
     app: {{ .Chart.Name }}
