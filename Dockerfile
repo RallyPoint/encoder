@@ -103,7 +103,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
 # ------------------ MAKE ----------------------- #
 WORKDIR /usr/app
 COPY . /usr/app
-COPY ./nginx.conf /etc/nginx/nginx.conf.template
+COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 1935
 
 RUN npm i
