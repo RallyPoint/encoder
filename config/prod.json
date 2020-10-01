@@ -36,9 +36,9 @@
   "thumbnail" : {
     "enable" : true,
     "fps" : "30/60",
-    "outPath" : "../data/thumbnail"
+    "outPath" : "/opt/data/hls/thumbnail"
   },
-  "mediaroot": "../data/media",
+  "mediaroot": "./data/media",
   "ffmpeg" : {
     "path" : "/usr/bin/ffmpeg",
     "defaultFlags" : [
