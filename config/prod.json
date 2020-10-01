@@ -11,13 +11,13 @@
   },
   "hooks" : {
     "enable" : true,
-    "host" : "http://127.0.0.1:9090/rtmp/",
+    "host" : "http://{HLS_API}/rtmp/",
     "onPublish" : "publish",
     "onDone" : "done",
     "onRecordDone" : "done-record"
   },
   "authentification": {
-    "host": "http://127.0.0.1:9090/rtmp/",
+    "host": "http://{HLS_API}/rtmp/",
     "uri": "authentification"
   },
   "twitch": {
