@@ -11,13 +11,13 @@
   },
   "hooks" : {
     "enable" : true,
-    "host" : "http://{HLS_API}/rtmp/",
+    "host" : "http://${HLS_API}/rtmp/",
     "onPublish" : "publish",
     "onDone" : "done",
     "onRecordDone" : "done-record"
   },
   "authentification": {
-    "host": "http://{HLS_API}/rtmp/",
+    "host": "http://${HLS_API}/rtmp/",
     "uri": "authentification"
   },
   "twitch": {
