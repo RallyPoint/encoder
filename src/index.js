@@ -35,7 +35,6 @@ function onPostPublish(id, streamPath, args, publishStreamName,publishMetaData) 
     ffmpegSession.set(id, session);
     session.on('end', () => {
         ffmpegSession.delete(id);
-        console.log("---------------------->",rtmpServer.sessions.get(id)?.stop);
         rtmpServer.sessions.get(id)?.stop();
     });
     // Hook

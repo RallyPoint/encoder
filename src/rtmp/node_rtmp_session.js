@@ -1011,7 +1011,6 @@ class NodeRtmpSession {
     if (!this.isStarting) {
       return;
     }
-    console.log(this.publishStreamId,this.publishArgs,invokeMessage);
 
     try{
       this.publishMetaData = await Authentification.authPublish(this);

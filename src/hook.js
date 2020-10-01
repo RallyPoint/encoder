@@ -12,7 +12,6 @@ function isSetted(hookName){
 
 async function callHook(hookName,data){
     if(!isSetted(hookName)) { return {}; }
-    console.log(hookName);
     return await axios.post(
         `${config.hooks.host}${config.hooks[hookName]}`,
         data

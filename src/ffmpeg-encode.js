@@ -61,7 +61,6 @@ class FfmpegEncode extends EventEmitter {
     }
      */
 
-    console.log(mapStr,"====================", this.publishArgs);
     try {
       mkdirp.sync(this.ouPath);
     }catch (e) {
@@ -81,7 +80,6 @@ class FfmpegEncode extends EventEmitter {
     }
 
     argv = argv.filter((n) => { return n }); //去空
-    console.log(config.ffmpeg.path, argv.join(" "));
     this.ffmpeg_exec = spawn(config.ffmpeg.path, argv);
     this.ffmpeg_exec.on('error', (e) => {
       Logger.ffdebug(e);
