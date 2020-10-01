@@ -1,0 +1,61 @@
+{
+  "logger" : {
+    "level" : 4 //    NONE: 0,    ERROR: 1,    NORMAL: 2,    DEBUG: 3,    FFDEBUG: 4
+  },
+  "rtmp": {
+    "port": 1935,
+    "chunk_size": 60000,
+    "gop_cache": false,
+    "ping": 30,
+    "ping_timeout": 60
+  },
+  "hooks" : {
+    "enable" : true,
+    "host" : "http://127.0.0.1:9090/rtmp/",
+    "onPublish" : "publish",
+    "onDone" : "done",
+    "onRecordDone" : "done-record"
+  },
+  "authentification": {
+    "host": "http://127.0.0.1:9090/rtmp/",
+    "uri": "authentification"
+  },
+  "twitch": {
+    "enable": true,
+    "host" : "rtmp://live-cdg.twitch.tv/app/"
+  },
+  "hls" : {
+    "enable" : true,
+    "flags": "[hls_time=2:hls_list_size=4:hls_flags=delete_segments]"
+  },
+  "record" : {
+    "enable": true,
+    "flags": "",
+    "outPath" : "../data/record"
+  },
+  "thumbnail" : {
+    "enable" : true,
+    "fps" : "30/60",
+    "outPath" : "../data/thumbnail"
+  },
+  "mediaroot": "../data/media",
+  "ffmpeg" : {
+    "path" : "/usr/bin/ffmpeg",
+    "defaultFlags" : [
+    ],
+    "ac" : "aac",
+    "vc" : "libx264",
+    "vcParam" : [
+      "-preset", "ultrafast",
+      "-r", "30",
+      "-tune", "zerolatency",
+      "-g", "30",
+      "-sc_threshold", "0",
+      "-s","1280x720",
+      "-maxrate","2000k",
+      "-b:v", "1250k"
+    ],
+    "acParam" : [ "-b:a", "160k","-ac", "2"]
+
+  }
+}

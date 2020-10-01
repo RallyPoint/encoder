@@ -1,13 +1,21 @@
-FROM registry.cn-hangzhou.aliyuncs.com/ossrs/srs:3
+FROM nginx:alpine
 
-WORKDIR /usr/local/srs
-RUN yum -y install gettext
-RUN pwd
-ADD hls.conf /usr/local/srs/conf/srs.conf.template
+ENV NODE_VERSION 14.11.0
 
+# ------------------ FFMPEG ----------------------- #
+RUN apk update
+RUN apk add ffmpeg
+# ------------------------------------------------- #
+
+# ------------------ NODEJS ----------------------- #
+RUN apk add --update nodejs nodejs-npm
+# ------------------------------------------------- #
+
+# ------------------ MAKE ----------------------- #
+
+WORKDIR /usr/app
+COPY . /usr/app
+COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 1935
-EXPOSE 80
-CMD envsubst "$(env | sed -e 's/=.*//' -e 's/^/\$/g')" < \
-  /usr/local/srs/conf/srs.conf.template > /usr/local/srs/conf/srs.conf && \
-  mkdir -p /opt/data/hls && chmod 755 /opt/data/hls && \
-  ./objs/srs -c conf/srs.conf
+
+RUN npm i
