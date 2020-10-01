@@ -108,4 +108,4 @@ EXPOSE 1935
 
 RUN npm i
 
-CMD [ "./ci/run-prod.sh" ]
+CMD [ "ls","&&","ls", "ci","&&","./ci/run-prod.sh" ]

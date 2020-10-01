@@ -14,4 +14,4 @@ env:
   NODE_ENV: "prod"
   HTTP_PORT: 80
   RTMP_PORT: 1935
-  HLS_API: "192.168.48.1:9090"
+  HLS_API: "back-back-clusteip.prod.svc.cluster.local"
